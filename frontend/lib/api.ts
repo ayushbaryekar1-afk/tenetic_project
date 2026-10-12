@@ -1,6 +1,9 @@
 import type { ChatApiResponse, ServerStatus } from "./types";
 
-export const API_URL = (process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000").replace(/\/$/, "");
+export const API_URL = (
+  process.env.NEXT_PUBLIC_API_URL ??
+  (process.env.NODE_ENV === "development" ? "http://localhost:8000" : "")
+).replace(/\/$/, "");
 
 const CHAT_TIMEOUT_MS = 120_000;
 const STATUS_TIMEOUT_MS = 8_000;
