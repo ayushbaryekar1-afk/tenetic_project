@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  @apply bg-paper font-sans text-ink antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid #0b5d6b;
+  outline-offset: 2px;
+}
+
+/* Slim scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #c5ccd6 transparent;
+}
+
+/* Markdown inside AI responses */
+.chat-md {
+  @apply text-[15px] leading-7 text-ink;
+  overflow-wrap: anywhere;
+}
+.chat-md > * + * {
+  @apply mt-3;
+}
+.chat-md h1,
+.chat-md h2,
+.chat-md h3 {
+  @apply font-semibold text-ink;
+}
+.chat-md h1 {
+  @apply text-lg;
+}
+.chat-md h2 {
+  @apply text-base;
+}
+.chat-md ul {
+  @apply list-disc pl-5;
+}
+.chat-md ol {
+  @apply list-decimal pl-5;
+}
+.chat-md li + li {
+  @apply mt-1;
+}
+.chat-md a {
+  @apply text-accent underline underline-offset-2;
+}
+.chat-md strong {
+  @apply font-semibold;
+}
+.chat-md code {
+  @apply rounded bg-paper px-1.5 py-0.5 text-[13px];
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+.chat-md pre {
+  @apply overflow-x-auto rounded-lg bg-rail p-4 text-[13px] leading-6 text-rail-text;
+}
+.chat-md pre code {
+  @apply bg-transparent p-0 text-inherit;
+}
+.chat-md blockquote {
+  @apply border-l-2 border-line pl-4 text-muted;
+}
+.chat-md table {
+  @apply w-full border-collapse text-sm;
+}
+.chat-md th {
+  @apply border-b border-line bg-paper px-3 py-2 text-left font-medium;
+}
+.chat-md td {
+  @apply border-b border-line px-3 py-2;
+}
+.chat-md hr {
+  @apply border-line;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
