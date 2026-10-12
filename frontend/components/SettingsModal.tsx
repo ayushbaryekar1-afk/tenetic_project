@@ -68,7 +68,9 @@ export default function SettingsModal({ open, status, connection, chatCount, onC
         </dl>
 
         <p className="mt-4 text-sm text-muted">
-          Credentials stay on the server. Change them in your backend .env file, then restart the backend.
+          For this deployed app, configure DATABRICKS_HOST and DATABRICKS_AGENT_ENDPOINT as Cloudflare Pages
+          variables, add DATABRICKS_TOKEN as an encrypted secret, and set DEMO_MODE=false. Save and redeploy.
+          If Databricks is not configured, chat requests return an error instead of demo data.
         </p>
 
         <div className="mt-6 border-t border-line pt-5">

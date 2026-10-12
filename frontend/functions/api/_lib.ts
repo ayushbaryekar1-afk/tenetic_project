@@ -355,5 +355,5 @@ export function isConfigured(env: Env): boolean {
 }
 
 export function isDemoMode(env: Env): boolean {
-  return env.DEMO_MODE?.toLowerCase() !== "false";
+  return env.DEMO_MODE?.toLowerCase() === "true";
 }
