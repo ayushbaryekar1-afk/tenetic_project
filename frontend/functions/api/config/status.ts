@@ -1,4 +1,4 @@
-import { isConfigured, jsonResponse } from "../_lib";
+import { isConfigured, isDemoMode, jsonResponse } from "../_lib";
 
 interface Env {
   DEMO_MODE?: string;
@@ -12,7 +12,7 @@ export async function onRequestGet({ env }: { env: Env }): Promise<Response> {
   return jsonResponse({
     status: "ok",
     app_name: "Tenetic AI",
-    mode: env.DEMO_MODE?.toLowerCase() === "true" ? "demo" : "live",
+    mode: isDemoMode(env) ? "demo" : "live",
     databricks_configured: isConfigured(env),
     genie_agents: Math.max(1, Number.parseInt(env.GENIE_AGENT_COUNT ?? "6", 10) || 6),
   });

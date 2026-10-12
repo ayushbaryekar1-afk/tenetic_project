@@ -322,7 +322,7 @@ export async function processChat(request: Request, env: Env): Promise<ChatResul
   }
 
   const started = Date.now();
-  const reply = env.DEMO_MODE?.toLowerCase() === "true"
+  const reply = isDemoMode(env)
     ? demoReply(message)
     : await databricksReply(env, message, conversationId);
   remember(conversationId, message, reply.text);
@@ -352,4 +352,8 @@ export function errorResponse(error: unknown): Response {
 
 export function isConfigured(env: Env): boolean {
   return Boolean(env.DATABRICKS_HOST && env.DATABRICKS_TOKEN && env.DATABRICKS_AGENT_ENDPOINT);
+}
+
+export function isDemoMode(env: Env): boolean {
+  return env.DEMO_MODE?.toLowerCase() !== "false";
 }
